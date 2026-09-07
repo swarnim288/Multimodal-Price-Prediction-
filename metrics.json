@@ -1,0 +1,153 @@
+{
+  "timestamp": "2026-08-15 05:50:34",
+  "config": {
+    "seed": 42,
+    "subset_size": 8000,
+    "n_train": 6800,
+    "n_val": 1200,
+    "n_bins": 10,
+    "val_fraction": 0.15,
+    "image_model": "vit_small_patch16_224.augreg_in21k_ft_in1k",
+    "text_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "image_emb_dim": 384,
+    "text_emb_dim": 384,
+    "tabular_feature_count": 12,
+    "tabular_feature_columns": [
+      "value_log1p",
+      "unit_ounce",
+      "unit_count",
+      "unit_fl_oz",
+      "unit_oz",
+      "unit_pound",
+      "unit_ct",
+      "unit_lb",
+      "unit_sq_ft",
+      "pack_count",
+      "item_name_len",
+      "n_bullets"
+    ],
+    "fused_dim": 780
+  },
+  "models": {
+    "ridge_text": {
+      "smape": 66.06872937057437,
+      "mae": 14.937547087091207,
+      "rmsle": 0.8606275529421994,
+      "r2": 0.15785578736407524
+    },
+    "hgb_image": {
+      "smape": 64.23837193638097,
+      "mae": 14.233413632540257,
+      "rmsle": 0.833929334325391,
+      "r2": 0.20911223189955186
+    },
+    "hgb_text": {
+      "smape": 63.32431980381763,
+      "mae": 14.089259388689582,
+      "rmsle": 0.826257956239629,
+      "r2": 0.2228333298427324
+    },
+    "hgb_fused": {
+      "smape": 59.52964993788119,
+      "mae": 13.1633989323422,
+      "rmsle": 0.7723936429285246,
+      "r2": 0.31881071057717636
+    },
+    "binres_fused": {
+      "smape": 57.834569115092386,
+      "mae": 12.845598800481737,
+      "rmsle": 0.7552929542846858,
+      "r2": 0.34878283515624786
+    },
+    "mlp_fused": {
+      "smape": 59.940984870186796,
+      "mae": 13.840617192232608,
+      "rmsle": 0.7960620545646423,
+      "r2": 0.28739143263484523,
+      "best_epoch": 4,
+      "epochs_trained": 12
+    }
+  },
+  "best_model": "binres_fused",
+  "per_decile": [
+    {
+      "decile": 0,
+      "n": 120,
+      "price_min": 0.5,
+      "price_max": 3.515,
+      "smape": 97.38306592911648
+    },
+    {
+      "decile": 1,
+      "n": 120,
+      "price_min": 3.58,
+      "price_max": 5.6,
+      "smape": 71.92734836627324
+    },
+    {
+      "decile": 2,
+      "n": 120,
+      "price_min": 5.65,
+      "price_max": 7.99,
+      "smape": 50.27749010519015
+    },
+    {
+      "decile": 3,
+      "n": 120,
+      "price_min": 7.99,
+      "price_max": 10.75,
+      "smape": 36.83772456966048
+    },
+    {
+      "decile": 4,
+      "n": 120,
+      "price_min": 10.85,
+      "price_max": 13.99,
+      "smape": 29.443342427807668
+    },
+    {
+      "decile": 5,
+      "n": 120,
+      "price_min": 14.09,
+      "price_max": 18.0,
+      "smape": 29.141873796959516
+    },
+    {
+      "decile": 6,
+      "n": 120,
+      "price_min": 18.47,
+      "price_max": 24.64,
+      "smape": 41.444882185904476
+    },
+    {
+      "decile": 7,
+      "n": 120,
+      "price_min": 24.69,
+      "price_max": 33.845,
+      "smape": 57.48067613462209
+    },
+    {
+      "decile": 8,
+      "n": 120,
+      "price_min": 33.99,
+      "price_max": 52.3,
+      "smape": 70.71214907038096
+    },
+    {
+      "decile": 9,
+      "n": 120,
+      "price_min": 52.41,
+      "price_max": 298.0,
+      "smape": 93.6971385650088
+    }
+  ],
+  "timings_sec": {
+    "ridge_text": 0.03711748123168945,
+    "hgb_image": 11.38826322555542,
+    "hgb_text": 10.018897771835327,
+    "hgb_fused": 11.843944787979126,
+    "binres_fused": 141.08618211746216,
+    "mlp_fused": 7.782579183578491
+  },
+  "total_train_elapsed_sec": 185.59057879447937
+}

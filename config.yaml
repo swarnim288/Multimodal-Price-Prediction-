@@ -1,0 +1,51 @@
+# Multimodal Price Prediction — single source of truth for pipeline knobs.
+# All relative paths are resolved against the repository root (the parent
+# directory of this `config/` folder), regardless of the current working
+# directory a script is invoked from.
+
+seed: 42
+
+# ---------------------------------------------------------------------------
+# Data locations (relative to repo root)
+# ---------------------------------------------------------------------------
+data_root: "data"
+csv_path: "data/dataset/train.csv"
+images_dir: "data/Train_Images"
+
+# ---------------------------------------------------------------------------
+# Data preparation
+# ---------------------------------------------------------------------------
+subset_size: 8000          # stratified subsample size drawn from the cleaned pool
+n_bins: 10                 # quantile bins over log(price)
+val_fraction: 0.15         # stratified train/val split fraction
+top_k_units: 8              # top-K most frequent units to one-hot encode
+
+# ---------------------------------------------------------------------------
+# Embedding models
+# ---------------------------------------------------------------------------
+image_model: "vit_small_patch16_224.augreg_in21k_ft_in1k"
+text_model: "sentence-transformers/all-MiniLM-L6-v2"
+
+image_batch_size: 32
+text_batch_size: 64
+text_max_length: 256
+image_num_workers: 0        # must stay 0 on Windows
+
+# ---------------------------------------------------------------------------
+# MLP fusion head
+# ---------------------------------------------------------------------------
+mlp:
+  hidden1: 512
+  hidden2: 128
+  dropout: 0.2
+  lr: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  max_epochs: 60
+  patience: 8
+
+# ---------------------------------------------------------------------------
+# Output locations (relative to repo root)
+# ---------------------------------------------------------------------------
+artifacts_dir: "artifacts"
+reports_dir: "reports"
