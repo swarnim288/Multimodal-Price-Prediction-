@@ -1,0 +1,16 @@
+# Core CPU pipeline dependencies. Pinned to minimum-known-good versions;
+# see docs/ARCHITECTURE.md for how each is used. The SLURM/LoRA scale-up
+# path (slurm/finetune_encoders.sbatch) additionally needs `peft`, installed
+# separately on the cluster — see slurm/README.md.
+
+torch>=2.3
+timm>=1.0
+transformers>=4.40
+scikit-learn>=1.4
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.8
+pyyaml>=6.0
+Pillow>=10.0
+tqdm>=4.66
+pyarrow>=15.0

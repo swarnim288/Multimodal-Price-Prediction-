@@ -1,0 +1,38 @@
+# Raw / large data — see data/README.md for how to obtain it.
+# Everything under data/ is ignored except this repo's own docs and the
+# small committed sample.
+data/*
+!data/README.md
+!data/sample/
+!data/sample/*.csv
+
+# Generated artifacts (embeddings, checkpoints, caches)
+artifacts/
+models/
+checkpoints/
+*.npy
+*.npz
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# SLURM job logs (local scratch only — not the sbatch scripts themselves)
+slurm/logs/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
